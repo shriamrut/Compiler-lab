@@ -1,0 +1,54 @@
+
+import java.io.*;
+class Main{
+	public static void main(String args[]) throws IOException{
+		q2 lex = new q2(new FileReader("input.txt"));
+		Token token = lex.yylex();
+		while(token.text !=null){
+			token = lex.yylex();
+		}
+	}
+}
+
+class Token{
+	String text;
+	Token(String t){
+		text=t;
+	}
+}
+%%
+%public
+%class q2
+%type void
+
+%type Token
+%eofval{
+return new Token(null);
+%eofval}
+
+digit = [0-9]
+letter =[a-zA-Z]
+special = [!@#$%^&*()_+]
+whitespace = [\t\n]
+
+%% 
+whitespace {System.out.print("");}
+main|var {System.out.println("Keyword");}
+integer|char|string|float {System.out.println("Data types");}
+if {System.out.println("If");}
+then {System.out.println("then");}
+else {System.out.println("else");}
+for {System.out.println("for");}
+while {System.out.println("while");}
+input {System.out.println("Input Function");}
+output {System.out.println("Output Function");}
+\"({letter}|{digit}|{special})*\" {System.out.println("String");}
+{letter}({letter}|{digit})* {System.out.println("Identifier");}
+\+|-|\*|\/ {System.out.println("Arithmetic Operators");}
+[\n] {System.out.print("");}
+&&|\|\||!== {System.out.println("Logical Operators");}
+\{	{System.out.println("Left Curly Braces");}
+\} {System.out.println("Right Curly Braces");}
+\( {System.out.println("Left Parenthesis");}
+\) {System.out.println("Right Parenthesis");}
+= {System.out.println("Assigment Operator");}
