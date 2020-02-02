@@ -31,4 +31,4 @@ whitespace=[\t\n\r]
 "const" {System.out.println("LA "+yytext()); return new Symbol(sym.CONST);}
 [\n] {System.out.println("LA "+yytext());return new Symbol(sym.NEWL);}
 [a-z][a-z0-9]* {System.out.println("LA "+yytext());
-return new Symbol(sym.ID,new String(yytext()));} 
+return new Symbol(sym.ID,new String(yytext()));}
