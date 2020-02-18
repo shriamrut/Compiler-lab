@@ -26,25 +26,19 @@ whitespace=[\t\n\r]
 ">"	   {System.out.println("LA "+yytext());return new Symbol(sym.GREAT);}
 "=="   {System.out.println("LA "+yytext());return new Symbol(sym.EQ);}
 "!="   {System.out.println("LA "+yytext());return new Symbol(sym.NEQ);}
-"("    {System.out.println("LA "+yytext());return new Symbol(sym.LPAREN);}
-")"    {System.out.println("LA "+yytext());return new Symbol(sym.RPAREN);}
-";"    {System.out.println("LA "+yytext());return new Symbol(sym.SEMI);}
-"{"    {System.out.println("LA "+yytext());return new Symbol(sym.LCB);}
-"}"	{System.out.println("LA "+yytext());return new Symbol(sym.RCB);}
-[\n]	{System.out.println("LA NEWL");return new Symbol(sym.NEWL);}
-","	{System.out.println("LA "+yytext());return new Symbol(sym.COMMA);}
+[\n]   {System.out.println("LA "+yytext());return new Symbol(sym.NEWL);}
+"("	   {System.out.println("LA "+yytext());return new Symbol(sym.LPAREN);}
+")"	   {System.out.println("LA "+yytext());return new Symbol(sym.RPAREN);}
+";"	   {System.out.println("LA "+yytext());return new Symbol(sym.SEMI);}
 "."	   {System.out.println("LA "+yytext());return new Symbol(sym.DOT);}
+"switch"  {System.out.println("LA "+yytext());return new Symbol(sym.SWITCH);}
+"while"   {System.out.println("LA "+yytext());return new Symbol(sym.WHILE);}
+"for"     {System.out.println("LA "+yytext());return new Symbol(sym.FOR);}
 "["	   {System.out.println("LA "+yytext());return new Symbol(sym.OS);}
 "]"	   {System.out.println("LA "+yytext());return new Symbol(sym.CS);}
 "if"   {System.out.println("LA "+yytext());return new Symbol(sym.IF);}
-"int"	{System.out.println("LA "+yytext());return new Symbol(sym.INT);}
-"float" {System.out.println("LA "+yytext());return new Symbol(sym.FLOAT);}
-"char"  {System.out.println("LA "+yytext());return new Symbol(sym.CHAR);}
-"void"	{System.out.println("LA "+yytext());return new Symbol(sym.VOID);}
-"string"	{System.out.println("LA "+yytext());return new Symbol(sym.STRING);}
 "else" {System.out.println("LA "+yytext());return new Symbol(sym.ELSE);}
-" "	   {System.out.println("LA SPACE"+yytext());return new Symbol(sym.SPACE);}
-"while" {System.out.println("LA "+yytext());return new Symbol(sym.WHILE);}
-"for" 	{System.out.println("LA "+yytext());return new Symbol(sym.FOR);}
-[a-z][a-z0-9]* {System.out.println("LA "+yytext());
+" "	   {System.out.println("LA "+yytext());return new Symbol(sym.SPACE);}
+[a-z][a-z0-9]* {System.out.println("LA "+yytext());}
+{whitespace}   {System.out.print("");}
 return new Symbol(sym.ID,new String(yytext()));}
